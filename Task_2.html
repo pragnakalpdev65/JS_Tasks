@@ -1,0 +1,45 @@
+<!--
+Task 2: String Reversal with Conditions
+Problem: Create a function that reverses a string, but keeps numbers in their original positions.
+Example Input: "abc123def" Expected Output: "fed123cba"
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Task 2</title>
+    </head>
+    <body>
+        <p id="demo"></p>
+
+        <script>
+            let input_string="abc123def";
+            let size=input_string.length;
+            let arr = input_string.split("");
+            let j=size-1;
+           
+            for(let i=0;i<(size/2);i++){
+                if(/^[A-Za-z]$/.test(arr[i])){
+                    for(j;j>(size/2);j--){
+                        if(/^[A-Za-z]$/.test(arr[j])){
+                            temp=arr[i];
+                            arr[i]=arr[j];
+                            arr[j]=temp;
+                            break;
+                        }   
+                    }
+                  j--   
+                }
+            }
+
+            document.getElementById("demo").innerHTML=arr.join("");
+        </script>   
+
+    </body>
+</html>
+
+
+
+
+
+
+

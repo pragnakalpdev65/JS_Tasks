@@ -1,0 +1,41 @@
+<!--
+Task 4: Fibonacci with Memoization
+Problem: Implement a fibonacci function using memoization to improve performance for large numbers.
+Example: fibonacci(10) should return 55
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Task 4</title>
+    </head>
+    <body>
+        <p id="demo"></p>
+        <script>
+            
+            function fibonacci(n,cache={}){
+                if (n in cache) return cache[n];
+                if(n==0)
+                {
+                    return 0;
+                }
+                if(n==1){
+                    return 1;
+                }
+                else{
+                    return cache[n]=fibonacci(n-1,cache)+fibonacci(n-2,cache);
+                }
+            }
+            let result=fibonacci(10)
+            document.getElementById("demo").innerHTML=result
+        </script>
+    </body>
+</html>
+
+
+        
+
+
+
+
+
+

@@ -1,0 +1,48 @@
+<!--
+Task 3: Object Property Counter
+Problem: Write a function that takes an array of objects and returns an object counting how many times each property value appears.
+Example Input:
+
+Expected Output: {John: 1, Jane: 1, Bob: 1, 25: 2, 30: 1}
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Task 3
+        </title>
+    </head>
+    <body>
+        <p id="demo"></p>
+        
+        <script>
+            let object_array=[
+                                {name: "John", age: 25},
+                                {name: "Jane", age: 25},
+                                {name: "Bob", age: 30}
+                              ];
+            let counts={}; 
+            let size=object_array.length;
+
+            object_array.forEach(counter);
+
+            function counter(obj) {
+                let values=Object.values(obj); 
+                for (let i=0;i<values.length;i++){
+                    let val=values[i];
+                    if (counts[val]){
+                        counts[val]++;
+                    } else {
+                        counts[val]=1;
+                    }
+                }
+            }
+            let result = "";
+            for (let key in counts) {
+                 result +=key+" : "+counts[key]+", ";
+                }
+            document.getElementById("demo").innerHTML=result;
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<!--
+Task 1: Array Manipulation
+Problem: Write a function that takes an array of numbers and returns a new array with only the even numbers, doubled.
+Example Input: [1, 2, 3, 4, 5, 6] Expected Output: [4, 8, 12]
+-->
+<html>
+    <head>
+        <title>Task 1</title>
+    </head>
+    <body>
+        <p id="demo"></p>
+       <script>
+          const array1=[1, 2, 3, 4, 5, 6];
+          const array2=[];
+          array1.forEach(myFunction);
+          
+          document.getElementById("demo").innerHTML=array2;
+          
+          function myFunction(value){
+            if(value%2==0){
+                array2.push(value*2);    
+            }
+          }
+          
+       </script>
+    </body>
+</html>
+
+
+

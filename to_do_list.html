@@ -1,0 +1,104 @@
+<!--Task: Build a Simple To-Do List
+1. HTML (Structure):
+
+- Create a basic HTML file.
+- Add a heading.
+- Add an input box for typing tasks.
+- Add a button to add the task.
+- Add an empty unordered list where tasks will appear.
+
+2. CSS (Styling):
+
+- Center the content on the page.
+- Style the input box and button.
+- Add a hover effect on the button.
+- Style the list items (like a card look).
+
+3. JavaScript (Functionality):
+
+When the button is clicked:
+    - Get the text from the input box.
+    - Create a new <li> element.
+    - Add the task text inside <li>.
+    - Append it to the <ul>.
+    - After adding, clear the input box.
+    - Allow clicking a task to mark it as done (strike-through).-->
+
+<!Doctype html>
+<html>
+    <head>
+        <title>
+            To do list
+        </title>
+        <style>
+            body 
+            {
+                justify-content: center; 
+                align-items: center;       
+                text-align: center;   
+                margin-top: 25%;  
+            }
+
+            input{
+                border-radius: 5px;
+            }
+            button{
+                background-color: #67eeee;
+                border: none;
+                border-radius: 5px;
+                height: 22px;
+            }
+            button:hover{
+                
+               background-color: rgb(26, 220, 231);
+                   
+            }
+            ul 
+            {
+               list-style-type: none;
+               margin-top: 15px;
+
+            }
+
+            li
+            {
+                background: #eee6e6;
+                margin: 5px auto;
+                padding: 8px;
+                border-radius: 5px;
+                cursor: pointer;
+                width: 300px;  
+                word-wrap: break-word;
+            }
+
+            
+
+        </style>
+    </head>
+    <body>
+        <h2 style="text-decoration: underline;">TO-DO List</h2>
+        <label for="task">Add task :</label>
+        <input type="text" id="task" placeholder="Enter task here.." >
+        <button id="addbtn">Add</button>
+        <ul id="task_list"></ul>
+        <script>
+              let input=document.getElementById("task");
+              document.getElementById("addbtn").addEventListener("click", myfunction);
+
+              function myfunction(){
+                let task = input.value;
+                if(task != ""){
+                    let listitem=document.createElement("li");
+                    listitem.textContent = task;
+
+                    listitem.addEventListener("click", function(){
+                        listitem.style.textDecoration="line-through";
+                    });
+
+                    document.getElementById("task_list").appendChild(listitem);
+                    input.value="";    
+                }
+              }
+        </script>
+    </body>
+</html>

@@ -33,22 +33,41 @@ When the button is clicked:
         <style>
             body 
             {
+                background-color: rgb(4, 189, 246);
                 justify-content: center; 
-                align-items: center;       
-                text-align: center;   
-                margin-top: 25%;  
+                align-items: center;         
+                min-height: 100vh;
+                display: flex;
+                background-image: linear-gradient(to top, rgb(4, 189, 246), yellow);
+            }
+            .container{
+                background-color: aliceblue;
+                border-radius:10px;
+                width:400px;
+                text-align: center;
+                padding: 20px;
+
+            }
+            .container:hover{
+                box-shadow: 5px 5px 5px rgb(6, 7, 8);           
             }
 
             input{
                 border-radius: 5px;
+                height: 40px;
+                width:300px;
+                border-color: darkgray;
             }
-            button{
+
+            #addbtn{
                 background-color: #67eeee;
                 border: none;
+                color: black;
                 border-radius: 5px;
-                height: 22px;
+                height: 45px;
+                width: 70px;
             }
-            button:hover{
+            #addbtn:hover{
                 
                background-color: rgb(26, 220, 231);
                    
@@ -57,34 +76,48 @@ When the button is clicked:
             {
                list-style-type: none;
                margin-top: 15px;
+               padding: 0;
 
             }
 
             li
             {
+                text-align: left;
                 background: #eee6e6;
-                margin: 5px auto;
+                margin: 5px 10px;
                 padding: 8px;
-                border-radius: 5px;
+                border-radius: 5px ;
                 cursor: pointer;
-                width: 300px;  
+                display: flex;
+                justify-content: space-between;
                 word-wrap: break-word;
-            }
+                max-width: 100%;     
+                overflow-wrap: anywhere;
+            } 
+            button{
+                background-color: rgb(9, 9, 9);
+                border-color: white;
+                color: white;
+                border-radius: 5px;
+                height: 20px;
 
-            
+            }
 
         </style>
     </head>
     <body>
+        <div class="container">
         <h2 style="text-decoration: underline;">TO-DO List</h2>
-        <label for="task">Add task :</label>
+        <label for="task"></label>
         <input type="text" id="task" placeholder="Enter task here.." >
         <button id="addbtn">Add</button>
+        
         <ul id="task_list"></ul>
+    </div>
         <script>
               let input=document.getElementById("task");
               document.getElementById("addbtn").addEventListener("click", myfunction);
-
+              let taskList = document.getElementById("task_list");
               function myfunction(){
                 let task = input.value;
                 if(task != ""){
@@ -95,10 +128,23 @@ When the button is clicked:
                         listitem.style.textDecoration="line-through";
                     });
 
-                    document.getElementById("task_list").appendChild(listitem);
+                    let delBtn = document.createElement("button");
+                    delBtn.textContent = "X";
+                    delBtn.classList.add("delete-btn");
+                    delBtn.addEventListener("click", function() {
+                    taskList.removeChild(listitem);
+                    });
+
+                    listitem.append(delBtn);
+                    taskList.appendChild(listitem);
                     input.value="";    
                 }
-              }
+                else{
+                        alert("Enter task..!");
+                    }
+                }
+    
         </script>
     </body>
 </html>
+

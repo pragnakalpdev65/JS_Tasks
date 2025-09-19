@@ -89,6 +89,7 @@ When the button is clicked:
       cursor: pointer;
       display: flex;
       align-items: center;
+      gap: 5px;
      
       
     }
@@ -162,6 +163,13 @@ When the button is clicked:
     const addBtn = document.getElementById("addbtn");
 
     addBtn.addEventListener("click", addTask);
+    input.addEventListener("keypress", function(event) 
+    {
+    if (event.key === "Enter") 
+     {
+      addBtn.click();
+     }
+    });
 
     function addTask() {
       let task = input.value.trim();

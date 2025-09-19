@@ -24,127 +24,183 @@ When the button is clicked:
     - After adding, clear the input box.
     - Allow clicking a task to mark it as done (strike-through).-->
 
-<!Doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>
-            To do list
-        </title>
-        <style>
-            body 
-            {
-                background-color: rgb(4, 189, 246);
-                justify-content: center; 
-                align-items: center;         
-                min-height: 100vh;
-                display: flex;
-                background-image: linear-gradient(to top, rgb(4, 189, 246), yellow);
-            }
-            .container{
-                background-color: aliceblue;
-                border-radius:10px;
-                width:400px;
-                text-align: center;
-                padding: 20px;
+<head>
+  <title>To-Do List</title>
+  <style>
+    body {
+      background-color: rgb(4, 189, 246);
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      display: flex;
+      background-image: linear-gradient(to bottom, rgb(4, 189, 246), rgb(135, 207, 228));
+      margin: 0;
+    }
 
-            }
-            .container:hover{
-                box-shadow: 5px 5px 5px rgb(6, 7, 8);           
-            }
+    .container {
+      background-color: aliceblue;
+      border-radius: 10px;
+      width: 300px;
+      text-align: center;
+      padding: 20px;
+      font-family: 'Arial', serif;
+    }
 
-            input{
-                border-radius: 5px;
-                height: 40px;
-                width:300px;
-                border-color: darkgray;
-            }
+    .container:hover {
+      box-shadow: 5px 5px 10px rgba(6, 7, 8, 0.4);
+    }
 
-            #addbtn{
-                background-color: #67eeee;
-                border: none;
-                color: black;
-                border-radius: 5px;
-                height: 45px;
-                width: 70px;
-            }
-            #addbtn:hover{
-                
-               background-color: rgb(26, 220, 231);
-                   
-            }
-            ul 
-            {
-               list-style-type: none;
-               margin-top: 15px;
-               padding: 0;
+    input {
+      border-radius: 20px;
+      height: 40px;
+      width: 200px;
+      border: 1px solid darkgray;
+      padding: 0 10px;
+    }
 
-            }
+    #addbtn {
+      border: none;
+      border-radius: 20px;
+      height: 45px;
+      width: 70px;
+      background-image: linear-gradient(to bottom, rgb(4, 189, 246), rgb(135, 207, 228));
+      cursor: pointer;
+      font-weight: bold;
+    }
 
-            li
-            {
-                text-align: left;
-                background: #eee6e6;
-                margin: 5px 10px;
-                padding: 8px;
-                border-radius: 5px ;
-                cursor: pointer;
-                display: flex;
-                justify-content: space-between;
-                word-wrap: break-word;
-                max-width: 100%;     
-                overflow-wrap: anywhere;
-            } 
-            button{
-                background-color: rgb(9, 9, 9);
-                border-color: white;
-                color: white;
-                border-radius: 5px;
-                height: 20px;
+    #addbtn:hover {
+      background-color: rgb(26, 220, 231);
+    }
 
-            }
+    ul {
+      list-style-type: none;
+      margin-top: 15px;
+      padding: 0;
+    }
 
-        </style>
-    </head>
-    <body>
-        <div class="container">
-        <h2 style="text-decoration: underline;">TO-DO List</h2>
-        <label for="task"></label>
-        <input type="text" id="task" placeholder="Enter task here.." >
-        <button id="addbtn">Add</button>
-        
-        <ul id="task_list"></ul>
-    </div>
-        <script>
-              let input=document.getElementById("task");
-              document.getElementById("addbtn").addEventListener("click", myfunction);
-              let taskList = document.getElementById("task_list");
-              function myfunction(){
-                let task = input.value;
-                if(task != ""){
-                    let listitem=document.createElement("li");
-                    listitem.textContent = task;
+    li {
+      background: #d9e1e3;
+      margin: 5px 10px;
+      padding: 8px;
+      border-radius: 10px;
+      border-left: 5px solid rgb(62, 214, 222);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+     
+      
+    }
 
-                    listitem.addEventListener("click", function(){
-                        listitem.style.textDecoration="line-through";
-                    });
+    li span {
+      /*margin-left: -20px;*/
+      flex: 1; 
+      overflow-wrap: anywhere;
+      text-align: left;
+      
+    }
 
-                    let delBtn = document.createElement("button");
-                    delBtn.textContent = "X";
-                    delBtn.classList.add("delete-btn");
-                    delBtn.addEventListener("click", function() {
-                    taskList.removeChild(listitem);
-                    });
 
-                    listitem.append(delBtn);
-                    taskList.appendChild(listitem);
-                    input.value="";    
-                }
-                else{
-                        alert("Enter task..!");
-                    }
-                }
+    li:hover {
+      background-color: #bce1ec;
+    }
+
+    li button {
+      background-color: rgb(9, 9, 9);
+      border: none;
+      color: white;
+      border-radius: 50%;
+      height: 25px;
+      width: 25px;
+      cursor: pointer;
+      text-align: center;
+      font-size: 14px;
+      line-height: 25px;
+    }
+
     
-        </script>
-    </body>
+
+    li button:hover {
+      background-color: rgb(232, 79, 79);
+    }
+
+    input[type="checkbox"] {
+      width: 15px;
+      height: 15px;
+      cursor: pointer;
+    }
+
+    @media only screen and (min-width: 800px) {
+      .container {
+        width: 400px;
+      }
+
+      input {
+        width: 300px;
+      }
+     /* li span {
+        margin-left: -31px;
+        margin-right: -25px;
+    }*/
+    
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 style="text-decoration: underline;">TO-DO List</h2>
+    <p>One Step At A Time..!</p>
+    <input type="text" id="task" placeholder="Enter task here..">
+    <button id="addbtn">Add</button>
+    <ul id="task_list"></ul>
+  </div>
+
+  <script>
+    const input = document.getElementById("task");
+    const taskList = document.getElementById("task_list");
+    const addBtn = document.getElementById("addbtn");
+
+    addBtn.addEventListener("click", addTask);
+
+    function addTask() {
+      let task = input.value.trim();
+
+      if (task !== "") {
+        let listItem = document.createElement("li");
+
+        let chkbox = document.createElement("input");
+        chkbox.type = "checkbox";
+
+        let taskSpan = document.createElement("span");
+        taskSpan.textContent = task;
+
+        chkbox.addEventListener("change", function() {
+          if (chkbox.checked) {
+            taskSpan.style.textDecoration = "line-through";
+            taskSpan.style.color = "gray";
+          } else {
+            taskSpan.style.textDecoration = "none";
+            taskSpan.style.color = "black";
+          }
+        });
+
+        let delBtn = document.createElement("button");
+        delBtn.textContent = "x"; 
+        delBtn.addEventListener("click", function() {
+          taskList.removeChild(listItem);
+        });
+
+        listItem.append(chkbox, taskSpan, delBtn);
+
+        taskList.appendChild(listItem);
+
+        input.value = "";
+      } else {
+        alert("Enter task..!");
+      }
+    }
+  </script>
+</body>
 </html>
 
